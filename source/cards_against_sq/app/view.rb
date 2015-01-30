@@ -3,34 +3,39 @@ require_relative 'config/application'
 # puts "Put your application code in #{File.expand_path(__FILE__)}"
 
 # This is the view! :)
+class View
+  def welcome
+    puts "    _   _   _   _   _     _   _   _   _   _   _   _     _   _   _   _   _   _   _   _   _
+    / \ / \ / \ / \ / \   / \ / \ / \ / \ / \ / \ / \   / \ / \ / \ / \ / \ / \ / \ / \ / \
+    ( C | a | r | d | s ) ( A | g | a | i | n | s | t ) ( S | q | u | i | r | r | e | l | s )
+    \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ "
+  end
 
-def welcome
-  puts "   _   _   _   _   _     _   _   _   _   _   _     _   _   _   _   _   _   _   _   _
-  / \ / \ / \ / \ / \   / \ / \ / \ / \ / \ / \   / \ / \ / \ / \ / \ / \ / \ / \ / \
-  ( C | a | r | d | s ) ( A | g | a | i | n | s ) ( S | q | u | i | r | r | e | l | s )
-  \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ "
-end
+  def clear_screen
+    puts "\e[H\e[2J"
+  end
 
-def clear_screen
-  puts "\e[H\e[2J"
-end
-
-def show_hand(card)
-  puts "This is your hand"
-  # show the hand
+  def show_hand(card)
+    puts "This is your hand"
+    print ".--------------."
+    puts " | #{card.text} |"
+    print ",--------------,"
   # have index of each card
   # seperators to view cards in a block
-end
+  end
 
-def read_card(card)
+  def read_card(card)
+    puts "This is your hand"
+    print ".--------------."
+    puts " | #{card.text} |"
+    print ".--------------."
+  end
 
-end
+  def choose_card
 
-def choose_card
+  end
 
-end
-
-def print_task_commands
+  def print_task_commands
   puts 'Here are your Tasks:'
   puts 'Please choose a command:'
   puts "Type 'add' to add a task"
@@ -39,9 +44,9 @@ def print_task_commands
   puts "Type exit to leave"
   response = gets.chomp.split(' ')
   do_task_commands(response)
-end
+  end
 
-def print_list_command
+  def print_list_command
   puts "Here are your Lists"
   puts 'Please choose a command:'
   puts "Type 'new' to add a new list"
@@ -50,70 +55,20 @@ def print_list_command
   puts "Type exit to leave"
   response = gets.chomp.split(' ')
   do_list_commands(response)
-end
+  end
 
-def display_all_lists(list)
-  List.all.each {|list| puts "##{list.id} - #{list.name}"}
 end
-
-def display_task_list(list)
-  puts "These are your tasks:"
-  list.tasks.each {|task| display_task(task)}
-end
-
-def display_task(task)
-  puts "(#{task.completed ? "X" : " "}) Task ##{task.id}, #{task.description}"
-end
-
 controller = Controller.new
 controller.current_list = prompt_for_list
 
-def do_task_commands(response)
-
-  command = response[0]
-
-  case command
-  when 'add'
-    description = response[1..-1].join(" ")
-    controller.add_task(description)
-  when 'delete'
-    controller.delete(response[1].to_i)
-  when 'complete'
-    controller.complete(response[1].to_i)
-  when 'switch'
-    controller.switch_list(prompt_for_list)
-
-  when 'exit'
-    break
-  end
-end
-
-def do_list_commands(response)
-  command = response[0]
-  id = response[1].to_i
-
-  case command
-  when "new"
-    controller.add_list
-  when "remove"
 
 
-  end
+#   while true
+#     clear_screen
+#     print_commands
+#     puts ""
+#     controller.list
+#   end
+# end
 
-
-
-
-
-
-  while true
-    clear_screen
-
-    print_commands
-    puts ""
-    controller.list
-
-
-  end
-end
-
-  p welcome
+p welcome

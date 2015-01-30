@@ -1,16 +1,20 @@
 class Controller
-  attr_accessor :game_over
+  attr_accessor :game_over, :view, :players
 
   def initialize
     @view = View.new
     @game_over = false
+    @players = []
   end
 
   def load_game
+    4.times do
+      @players << Player.new
+    end
   end
 
   def turn
-    @view.shows_hand(player[0].hand)
+    @view.show_hand(players[0].hand)
     read_black_card
     @view.read_card(card)
     cards_played = played_cards
