@@ -1,23 +1,17 @@
-require_relative 'config/application'
+require_relative '../config/application'
+
+# puts "*" * 100
 
 def populate_white_cards
-  white_cardsd= []
-  file = File.open('wcards.txt', 'r') do |file|
-      while line = file.gets
-        white_cards << line
-      end
-  end
+  file = File.open("wcards.txt", "r")
+  white_cards = file.map {|line|  line.chomp }
   white_cards.each {|card| WhiteCard.create(text: card) }
 end
 
 
 def populate_black_cards
-  black_cards= []
-  file = File.open('bcards.txt', 'r') do |file|
-      while line = file.gets
-        black_cards << line
-      end
-  end
+  file = File.open("bcards.txt", "r")
+  black_cards= file.map { |line| line.chomp }
   black_cards.each {|card| BlackCard.create(text: card) }
 end
 
