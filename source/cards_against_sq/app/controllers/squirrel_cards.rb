@@ -34,7 +34,7 @@ class Controller
     played_cards = []
     played_cards << (gets_card_from_view)
     #choose 1 random card from each player, push into played_card
-
+    #needs to set played to false on played_cards.each
   end
 
   def pick_winning_card(played_cards)
