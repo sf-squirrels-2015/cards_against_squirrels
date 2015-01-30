@@ -1,10 +1,11 @@
-class CreatePlayers < ActiveRecord::Mirgation
+class CreatePlayers < ActiveRecord::Migration
 
   def change
-    create_table :person do |t|
+    create_table :players do |t|
       t.string :name
       t.integer :points
 
       t.timestamps
     end
+  end
 end
