@@ -4,10 +4,6 @@ require_relative 'config/application'
 
 # This is the view! :)
 
-# Create an instance of the controller
-# Get information from ARGV
-# Send that information to the controller
-# Display pretty information
 
 def clear_screen
   puts "\e[H\e[2J"
