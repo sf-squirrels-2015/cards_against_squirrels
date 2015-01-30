@@ -1,8 +1,4 @@
 require_relative 'config/application'
-
-# puts "Put your application code in #{File.expand_path(__FILE__)}"
-
-# This is the view! :)
 class View
   def welcome
     puts "    _   _   _   _   _     _   _   _   _   _   _   _     _   _   _   _   _   _   _   _   _
@@ -17,6 +13,7 @@ class View
 
   def show_hand(card)
     puts "This is your hand"
+    puts "***#{card.id}***"
     print ".--------------."
     puts " | #{card.text} |"
     print ",--------------,"
@@ -24,38 +21,28 @@ class View
   # seperators to view cards in a block
   end
 
-  def read_card(card)
-    puts "This is your hand"
-    print ".--------------."
-    puts " | #{card.text} |"
-    print ".--------------."
+def read_card(card)
+  if card.class == BlackCard
+    puts "SQUIRREL HERE IS THE BLACK CARD\n"
   end
+  print ".--------------."
+  puts " | #{card.text} |"
+  print ".--------------."
+end
 
-  def choose_card
-
+def read_played(played_cards, black_card)
+  puts "SQUIRREL HERE IS WHAT WAS PLAYED"
+  played_cards.each do |card|
+    read_card(black_card)
+    read_card(card)
   end
+end
 
-  def print_task_commands
-  puts 'Here are your Tasks:'
-  puts 'Please choose a command:'
-  puts "Type 'add' to add a task"
-  puts "Enter 'delete' and a task # to remove a task"
-  puts "Enter 'complete' and a task # to mark a task as completed"
-  puts "Type exit to leave"
-  response = gets.chomp.split(' ')
-  do_task_commands(response)
-  end
-
-  def print_list_command
-  puts "Here are your Lists"
-  puts 'Please choose a command:'
-  puts "Type 'new' to add a new list"
-  puts "Enter 'remove' and a list # to remove a list"
-  puts "Enter 'select' and a list # to select a list"
-  puts "Type exit to leave"
-  response = gets.chomp.split(' ')
-  do_list_commands(response)
-  end
+def choose_card
+  puts "Enter the number of the card you would like to play\n"
+  response = gets.chomp.to_i
+  return response
+end
 
 end
 controller = Controller.new
