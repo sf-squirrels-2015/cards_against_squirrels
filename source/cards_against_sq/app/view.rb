@@ -4,9 +4,30 @@ require_relative 'config/application'
 
 # This is the view! :)
 
+def welcome
+  puts "   _   _   _   _   _     _   _   _   _   _   _     _   _   _   _   _   _   _   _   _
+  / \ / \ / \ / \ / \   / \ / \ / \ / \ / \ / \   / \ / \ / \ / \ / \ / \ / \ / \ / \
+  ( C | a | r | d | s ) ( A | g | a | i | n | s ) ( S | q | u | i | r | r | e | l | s )
+  \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ "
+end
 
 def clear_screen
   puts "\e[H\e[2J"
+end
+
+def show_hand(card)
+  puts "This is your hand"
+  # show the hand
+  # have index of each card
+  # seperators to view cards in a block
+end
+
+def read_card(card)
+
+end
+
+def choose_card
+
 end
 
 def print_task_commands
@@ -77,19 +98,22 @@ def do_list_commands(response)
   when "remove"
 
 
+  end
+
+
+
+
+
+
+  while true
+    clear_screen
+
+    print_commands
+    puts ""
+    controller.list
+
+
+  end
 end
 
-
-
-
-
-
-while true
-  clear_screen
-
-  print_commands
-  puts ""
-  controller.list
-
-
-end
+  p welcome
