@@ -29,6 +29,11 @@ Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each do |controller_file|
   autoload ActiveSupport::Inflector.camelize(filename), controller_file
 end
 
+Dir[APP_ROOT.join('app', 'view', '*.rb')].each do |view_file|
+  filename = File.basename(view_file).gsub('.rb', '')
+  autoload ActiveSupport::Inflector.camelize(filename), view_file
+end
+
 ActiveRecord::Base.establish_connection :adapter  => 'sqlite3',
                                         :database => DB_PATH
 
