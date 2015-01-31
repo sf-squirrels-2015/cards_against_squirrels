@@ -38,7 +38,7 @@ class Controller
   end
 
   def read_black_card
-    @black_card = BlackCard.find_by(played: false, player_id: nil)
+    @black_card = BlackCard.where(played: false, player_id: nil).sample
     @view.read_card(@black_card)
   end
 
@@ -100,6 +100,9 @@ controller.load_game
 controller.turn
 
 until controller.game_over == true
+  sleep(7)
+  controller.view.clear_screen
   controller.turn
-  sleep(5)
+
+  sleep(10)
 end
